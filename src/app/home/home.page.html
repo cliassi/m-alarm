@@ -1,20 +1,26 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+        <ion-title>
+            M Alarm
+        </ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div [style]="classes" [ngStyle]="{'background-color': alarm.isEnable ? '#FFB273' : '#53D5FC' }" *ngFor="let alarm of alarmList; let i = index">
+        <div>
+            <ion-text color="light">
+                <h5>{{alarm.day}}</h5>
+            </ion-text>
+            <ion-text color="light">
+                <h2>{{alarm.hours}}</h2>
+            </ion-text>
+            <ion-text color="light">
+                <h4>{{alarm.title}} </h4>
+            </ion-text>
+        </div>
+        <div>
+            <ion-toggle [(ngModel)]="alarm.isEnable" (click)="myChange(alarm.isEnable, i)"></ion-toggle>
+            <hr>
+        </div>
+    </div>
 </ion-content>

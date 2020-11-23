@@ -1,6 +1,24 @@
+ion-toggle {
+  height: 30px;
+  width: 60px;
+  border-radius: 40px;
+  //background: #595959;
+  --handle-box-shadow: 0 3px 12px rgba(255, 0, 0, 0.6), 0 3px 1px rgba(50, 70, 255, 0.6);
+  //--handle-box-shadow: 4px 0 2px 0 red;
+
+  overflow: visible;
+
+  contain: none;
+}
+
+ion-toggle.toggle-checked {
+  --handle-box-shadow: 0 3px 12px rgba(255, 0, 0, 0.6), 0 3px 1px rgba(50, 70, 255, 0.6);
+}
+
+
 #container {
   text-align: center;
-
+  background: #2dd36f;
   position: absolute;
   left: 0;
   right: 0;
