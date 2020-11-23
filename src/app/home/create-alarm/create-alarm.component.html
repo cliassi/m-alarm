@@ -1,0 +1,38 @@
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-title>Create Alarm</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <ion-list>
+
+        <ion-item>
+            <ion-label>Select Days</ion-label>
+            <ion-select [(ngModel)]="modelData.day" class="custom-options" multiple="true">
+                <ion-select-option value="Saturday">Saturday</ion-select-option>
+                <ion-select-option value="Sunday">Sunday</ion-select-option>
+                <ion-select-option value="Monday">Monday</ion-select-option>
+                <ion-select-option value="Tuesday">Tuesday</ion-select-option>
+                <ion-select-option value="Wednesday">Wednesday</ion-select-option>
+                <ion-select-option value="Thursday">Thursday</ion-select-option>
+                <ion-select-option value="Friday">Friday</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Select Time</ion-label>
+            <ion-datetime [(ngModel)]="modelData.day" display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea [(ngModel)]="modelData.title"></ion-textarea>
+        </ion-item>
+
+        <section>
+            <ion-button (click)="save()" expand="block">Save Alarm</ion-button>
+        </section>
+    </ion-list>
+</ion-content>

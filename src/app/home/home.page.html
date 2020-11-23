@@ -6,14 +6,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-    <ion-item>
-        <ion-label>HH:mm</ion-label>
-        <ion-datetime displayFormat="HH:mm"></ion-datetime>
-    </ion-item>
-
     <div [style]="classes" [ngStyle]="{'background-color': alarm.isEnable ? '#FFB273' : '#53D5FC' }" *ngFor="let alarm of alarmList; let i = index">
         <div>
-            <ion-text class="days"  color="light">
+            <ion-text class="days" color="light">
                 <h5>{{alarm.day}}</h5>
             </ion-text>
             <ion-text class="date" color="light">
@@ -29,7 +24,7 @@
         </div>
     </div>
     <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button>
+        <ion-fab-button (click)="presentModal()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>

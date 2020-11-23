@@ -1,11 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-
-interface Alarm {
-    day: string;
-    hours: string;
-    title: string;
-    isEnable: boolean;
-}
+import {ModalController} from '@ionic/angular';
+import {CreateAlarmComponent} from './create-alarm/create-alarm.component';
+import {AlarmService} from './service/alarm.service';
+import {Alarm} from './model/Alarm';
 
 @Component({
     selector: 'app-home',
@@ -16,16 +13,9 @@ interface Alarm {
 
 export class HomePage implements OnInit {
 
-    alarmList: Alarm[] = [
-        {day: 'Saturday', hours: '030:40', title: 'Alarm for medicine', isEnable: false},
-        {day: 'Sunday', hours: '040:40', title: 'Alarm for XYZ', isEnable: false},
-        {day: 'Monday', hours: '040:40', title: 'Alarm for abcs', isEnable: false},
-        {day: 'Friday', hours: '12:40', title: 'Alarm for Namaj', isEnable: true},
-        {day: 'Friday', hours: '12:40', title: 'Alarm for Namaj', isEnable: true},
-        {day: 'Friday', hours: '12:40', title: 'Alarm for Namaj', isEnable: true},
-        {day: 'Friday', hours: '12:40', title: 'Alarm for Namaj', isEnable: false},
-    ];
+    alarmList: Alarm[] = [];
     myValue = true;
+    currentModal: any;
 
 
     classes: any = {
@@ -33,14 +23,12 @@ export class HomePage implements OnInit {
         'border-bottom': '2px solid white'
     };
 
-    constructor() {
+    constructor(public modalController: ModalController, public service: AlarmService) {
     }
 
-    /* <ion-toggle [(ngModel)]="myValue" (ionChange)="myChange($event)"/>
-*/
-    baba: any = {
-        color: 'red'
-    };
+    ngOnInit(): void {
+        this.alarmList = this.service.getList();
+    }
 
     myChange(value: boolean, i: any) {
         /*  event.stopImmediatePropagation();
@@ -52,7 +40,17 @@ export class HomePage implements OnInit {
         this.ngOnInit();
     }
 
-    ngOnInit(): void {
-        console.log(this.alarmList);
+
+    async presentModal() {
+        const modal = await this.modalController.create({
+            component: CreateAlarmComponent,
+            cssClass: 'my-custom-class',
+            componentProps: {
+                modal: this.currentModal,
+                asdsd: 'asdasdasda'
+            }
+        });
+        this.currentModal = modal;
+        return await modal.present();
     }
 }
