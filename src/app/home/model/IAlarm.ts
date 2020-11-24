@@ -1,17 +1,17 @@
-export interface Alarm {
-    day: string;
+export interface IAlarm {
+    day:string[];
     hours: string;
     title: string;
     isEnable: boolean;
 }
 
-export class AlarmData {
-    day: string;
+export class AlarmData implements IAlarm {
+    day: string[];
     hours: string;
     title: string;
     isEnable: boolean;
 
-    constructor(day: string,
+    constructor(day: string[],
                 hours: string,
                 title: string,
                 isEnable: boolean) {

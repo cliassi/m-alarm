@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {AlarmService} from '../service/alarm.service';
-import {AlarmData} from '../model/Alarm';
+import {AlarmData} from '../model/IAlarm';
 
 @Component({
     selector: 'app-create-alarm',
@@ -10,7 +10,7 @@ import {AlarmData} from '../model/Alarm';
 })
 export class CreateAlarmComponent implements OnInit {
 
-    modelData: AlarmData = new AlarmData('', '', '', true);
+    modelData: AlarmData = new AlarmData([''], '', '', true);
 
     constructor(public modalController: ModalController, public service: AlarmService) {
     }
@@ -27,7 +27,11 @@ export class CreateAlarmComponent implements OnInit {
 
     save() {
         console.log(this.modelData);
-        // this.service.createAlarm(this.modelData);
+        const dateformat = new Date(this.modelData.hours);
+        this.modelData.hours = dateformat.toLocaleTimeString();
+        console.log(this.modelData.hours);
+        this.service.createAlarm(this.modelData);
+        this.dismiss();
     }
 
 }

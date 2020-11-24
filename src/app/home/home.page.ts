@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {CreateAlarmComponent} from './create-alarm/create-alarm.component';
 import {AlarmService} from './service/alarm.service';
-import {Alarm, AlarmData} from './model/Alarm';
+import {IAlarm, AlarmData} from './model/IAlarm';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +13,7 @@ import {Alarm, AlarmData} from './model/Alarm';
 
 export class HomePage implements OnInit {
 
-    alarmList: Alarm[] = [];
+    alarmList: IAlarm[] = [];
     currentModal: any;
 
     //css
