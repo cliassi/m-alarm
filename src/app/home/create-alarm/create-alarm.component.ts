@@ -10,24 +10,19 @@ import {AlarmData} from '../model/Alarm';
 })
 export class CreateAlarmComponent implements OnInit {
 
-    @Input() modal: any;
-    @Input() asdsd: any;
-
     modelData: AlarmData = new AlarmData('', '', '', true);
 
     constructor(public modalController: ModalController, public service: AlarmService) {
-        console.log(this.asdsd);
     }
 
     ngOnInit() {
+
     }
 
     dismiss() {
-        // using the injected ModalController this page
-        // can "dismiss" itself and optionally pass back data
         this.modalController.dismiss({
             dismissed: true
-        }).then(() => this.modal = null);
+        });
     }
 
     save() {
